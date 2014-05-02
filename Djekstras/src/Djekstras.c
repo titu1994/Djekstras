@@ -44,7 +44,7 @@ int main() {
 			if(cost[i][j]==0)
 				cost[i][j]=infinity;
 		}
-	printf("\n Enter the source matrix:");
+	printf("\n Enter the source :");
 	scanf("%d",&v);
 	dij(n,v,cost,dist);
 	printf("\n Shortest path:\n");
