@@ -1,6 +1,6 @@
 /*
  ============================================================================
- Name        : Djekstras.c
+ Name        : Djejstras.c
  Author      : Somshubra Majumdar
  Version     :
  Copyright   : Your copyright notice
@@ -11,23 +11,23 @@
 #include <stdio.h>
 #include <conio.h>
 
-#define infinity 32767
+#define infinity 999
 
 void dij(int n,int v,int cost[10][10],int dist[]) {
-	int i,u,count,w,flag[10],min;
+	int i,j,u,visited[10] = {0},min;
 	for(i=1;i<=n;i++)
-		flag[i]=0,dist[i]=cost[v][i];
-	count=2;
-	while(count<=n) {
-		min=99;
-		for(w=1;w<=n;w++)
-			if(dist[w]<min && !flag[w])
-				min=dist[w],u=w;
-		flag[u]=1;
-		count++;
-		for(w=1;w<=n;w++)
-			if((dist[u]+cost[u][w]<dist[w]) && !flag[w])
-				dist[w]=dist[u]+cost[u][w];
+		dist[i]=cost[v][i];
+	i=2;
+	while(i<=n) {
+		min=999;
+		for(j=1;j<=n;j++)
+			if(dist[j]<min && !visited[j])
+				min=dist[j],u=j;
+		visited[u]=1;
+		i++;
+		for(j=1;j<=n;j++)
+			if((dist[u]+cost[u][j]<dist[j]) && !visited[j])
+				dist[j]=dist[u]+cost[u][j];
 	}
 }
 int main() {
